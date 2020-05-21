@@ -22,6 +22,7 @@
 		//Variables entrada
 		String usuario = "";
 		String password = "";
+		
 		// variables Gatos
 		int nChip = 0;
 		String nombre_gato = "";
@@ -32,34 +33,40 @@
 		String dniAdop = "";
 		int local = 1;
 		String descripcion = "";
+		
 		//variables Voluntario
 		String dni_Voluntario = ""; 
 		String nombre_Voluntario = ""; 
 		String fecha_Inscripcion = ""; 
 		int telefonoVolun = 0; 
 		String distrito = "";
+		
 		//Variables local
 		String calle= "";
 		int telefonoLocal = 0;
 		int aforoPers = 0;
 		int aforoGatos = 0;
+		
 		//Variables Particulares
 		String dni_Particular = ""; 
 		String nombre_Particular = ""; 
 		int telefonoParticular = 0; 
 		String residencia = ""; 
 		int numero_gatos = 0;	
+		
 		//Variables Trabajadores
 		String dni_trabajador = ""; 
 		String nombre_trabajador = ""; 
 		String fecha_nac = ""; 
 		String numero_Seg_Social = ""; 
 		String puesto = "";
+		
 		//Variables Veterinarios
 		String dni_veterinario = ""; 
 		String nombre_veterinario = ""; 
 		int telefono_veterinario = 0; 
 		String especialidad = "";
+		
 		//Variables socio
 		String dni_Socio = "";
 		String nombre_Socio= "";
@@ -67,16 +74,19 @@
 		String email = "";
 		String tipo = "";
 		String estado = "";
+		
 		//Variables contrato
 		int codigo_contrato = 0; 
-		String fecha_inicio = ""; 
-		String fecha_fin = ""; 
+		String fecha_inicio_contrato = ""; 
+		String fecha_fin_contrato = ""; 
 		double presupuesto = 0;
+		
 		//Variables visita
 		int id_Cita = 0;
 		String fecha_cita = "";
 		String tratamiento = "";
 		int duracion = 0;
+		
 		//Variables extra	
 		String mensaje = "";
 		String operacion="correcta";
@@ -711,12 +721,12 @@
 					
 				}else{
 					
-					fecha_inicio = request.getParameter("fechaIni");	
-					fecha_fin = request.getParameter("fechaFin");	
+					fecha_inicio_contrato = request.getParameter("fechaIni");	
+					fecha_fin_contrato = request.getParameter("fechaFin");	
 					presupuesto = Double.parseDouble(request.getParameter("presupuesto"));
 						
 									
-					controladorBD.altaContrato(dni_veterinario, dni_Particular, fecha_inicio, fecha_fin, presupuesto);
+					controladorBD.altaContrato(dni_veterinario, dni_Particular, fecha_inicio_contrato, fecha_fin_contrato, presupuesto);
 					mensaje = "Contrato dado de alta con exito";
 				}				
 			}
@@ -730,12 +740,12 @@
 				codigo_contrato = Integer.parseInt(request.getParameter("codigo"));
 				dni_veterinario = request.getParameter("dniVet");
 				dni_Particular = request.getParameter("dniPart");
-				fecha_inicio = request.getParameter("fechaIni");	
-				fecha_fin = request.getParameter("fechaFin");	
+				fecha_inicio_contrato = request.getParameter("fechaIni");	
+				fecha_fin_contrato = request.getParameter("fechaFin");	
 				presupuesto = Double.parseDouble(request.getParameter("presupuesto"));
 				
 								
-				controladorBD.modificarContrato(codigo_contrato, dni_veterinario, dni_Particular, fecha_inicio, fecha_fin, presupuesto);
+				controladorBD.modificarContrato(codigo_contrato, dni_veterinario, dni_Particular, fecha_inicio_contrato, fecha_fin_contrato, presupuesto);
 				mensaje = "Veterinario actualizado con exito";
 			}
 

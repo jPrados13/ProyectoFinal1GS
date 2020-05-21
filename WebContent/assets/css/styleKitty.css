@@ -1,0 +1,147 @@
+.mainContainer{
+  background: #462C61;
+  padding-right: 15%;
+  padding-left: 15%;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  padding-bottom: 2%; 
+  padding-top: 2%; 
+}
+.RSImages{
+  width: 30px;
+  margin: 10px;
+}
+.Publi{
+	width: 80%;
+	margin: auto;
+	padding-bottom: 2%; 
+    padding-top: 2%; 
+}
+.title{
+	font-family: 'Anton', sans-serif;
+	font-size: 6em;
+	margin-bottom: 30px;
+	padding-top: 30px;
+}
+nav a{
+	font-weight: bold;
+	font-size: 1.25em;
+}
+.nav{
+	background-color: #f8f9fa;
+	font-family: 'Anton', sans-serif;
+}
+.navbar-expand-xl{
+	margin: auto !important;
+}
+.subtitle{
+	margin-bottom: 30px;
+	padding-top: 30px;
+	font-style: italic;
+	font-weight: bold;
+}
+hr{
+	background: white;
+}
+.textInfo{
+	font-size: 1.3em;
+}
+.intro{
+	width: 100%;
+	margin-bottom: 70px;
+}
+.resume{
+	margin-top: 40px;
+}
+.resume p{
+	margin-right: 10%;
+}
+@media (min-width: 1500px){
+	.imgIntro{
+		width: 20% !important;
+	}
+}
+.imgIntro{
+	width: 40%;
+	float: right;
+	margin: 20px;
+}
+.importante{
+	color: white;
+	font-size: 2.2em;
+}
+.horarios{
+	color: white;
+	font-size: 1.5em;
+}
+.mapaYtitulo{
+	display: inline;
+	width: 50%;
+}
+.generalInfo{
+	display: inline;
+	width: 40%;
+}
+.jumbotron-fluid{
+	background: #000001 !important;
+	color: white !important;
+}
+@media (min-width: 1200px){
+	.fotos{
+	display: grid;
+	grid-template-columns: auto auto auto;
+	grid-row-gap: 30px;
+	}
+	.itemGrid img{
+		width: 350px;
+		height: 275px;
+	}
+}
+.itemGrid{
+	padding: 10px;
+}
+.InfoAbajo{
+	font-family: 'Libre Caslon Text', serif;
+	text-decoration: underline;
+	font-size: 2em;
+}
+.recuadro{
+	background: #882C61;
+	margin-bottom: -1%;
+	padding-right: 15%;
+    padding-left: 15%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+@media (min-width: 1270px){
+	.footer{
+		padding-right: 15%;
+	    padding-left: 15%;
+	    padding-top: 2%;
+	    padding-bottom: 2%;
+		background: #000001;
+		color: white;
+		display: flex;
+		justify-content: space-between;
+	}
+}
+.footer{
+	padding-right: 15%;
+    padding-left: 15%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+	background: #000001;
+	color: white;
+}
+.formulario{
+	margin-top: 3%;
+	border-radius: 10px;
+	border: 2px;
+	border-color: white !important;
+	border-style: solid;
+	padding: 2%;
+}
+.required{
+	color: red;
+	font-size: x-large;
+}

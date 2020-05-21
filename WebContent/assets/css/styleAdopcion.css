@@ -1,0 +1,176 @@
+
+.mainContainer{
+  background: #462C61;
+  padding-right: 15%;
+  padding-left: 15%;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: -1%;
+  padding-bottom: 2%; 
+}
+.RSImages{
+  width: 30px;
+  margin: 10px;
+}
+.Publi{
+	width: 70%;
+	margin: auto;
+}
+.title{
+	font-family: 'Anton', sans-serif;
+	font-size: 6em;
+	margin-bottom: 30px;
+	padding-top: 30px;
+}
+nav a{
+	font-weight: bold;
+	font-size: 1.25em;
+}
+.nav{
+	background-color: #f8f9fa;
+	font-family: 'Anton', sans-serif;
+}
+.navbar-expand-xl{
+	margin: auto !important;
+}
+.subtitle{
+	text-align: center;
+	font-style: italic;
+	font-weight: bold;
+	padding: 3%;
+}
+hr{
+	background: white;
+}
+.mainContainer p{
+	font-size: 1.3em;
+}
+.intro{
+	width: 100%;
+	margin-bottom: 70px;
+}
+.resume{
+	margin-top: 40px;
+}
+.resume p{
+	margin-right: 10%;
+}
+@media (min-width: 1500px){
+	.imgIntro{
+		width: 20% !important;
+	}
+}
+.imgIntro{
+	width: 40%;
+	float: right;
+	margin: 20px;
+}
+.importante{
+	color: red;
+	font-size: 2.2em;
+}
+.horarios{
+	color: #C20114;
+	font-size: 1.5em;
+}
+.mapaYtitulo{
+	display: inline;
+	width: 50%;
+}
+.generalInfo{
+	display: inline;
+	width: 40%;
+}
+.jumbotron-fluid{
+	background: #000001 !important;
+	color: white !important;
+}
+@media (min-width: 1500px){
+	.gatos{
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	grid-row-gap: 30px;
+	grid-column-gap: 20px;
+	}
+}
+@media (max-width: 1500px){
+	.gatos{
+	display: grid;
+	grid-template-columns: auto auto auto;
+	grid-row-gap: 30px;
+	grid-column-gap: 20px;
+	}
+}
+@media (max-width: 1200px){
+	.gatos{
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-row-gap: 30px;
+	grid-column-gap: 20px;
+	}
+}
+.itemGrid{
+	padding: 10px;
+}
+.InfoAbajo{
+	font-family: 'Libre Caslon Text', serif;
+	text-decoration: underline;
+	font-size: 2em;
+}
+.gatos a{
+	text-decoration: none;
+	color: white;
+}
+.infoAdop{
+	padding-top: 2%;
+	padding-bottom: 2%;
+	padding-right: 10%;
+	padding-left: 10%;
+	border-radius: 10px;
+	border-color: #462C61 !important;
+	border: 1px;
+	border-style: solid;
+	background-image: url("../../images/papiroBckg.jpg");
+	background-size: cover;
+	animation-name: showInfo;
+	animation-duration: 2s;
+	color: #000001;
+	margin-bottom: 1%;
+}
+.titleAdop{
+	font-size: 2em !important;
+	font-style: italic;
+	font-weight: bold;
+}
+@keyframes showInfo{
+	0%{
+		opacity: 0;
+		
+		
+	}
+	100%{
+		opacity: 1;
+		display: inline-block;
+		
+	}
+}
+@media (min-width: 1270px){
+	.footer{
+		padding-right: 15%;
+	    padding-left: 15%;
+	    padding-top: 2%;
+	    padding-bottom: 2%;
+		background: #000001;
+		color: white;
+		display: flex;
+		justify-content: space-between;
+	}
+}
+.footer{
+	padding-right: 15%;
+    padding-left: 15%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+	background: #000001;
+	color: white;
+}

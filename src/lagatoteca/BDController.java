@@ -1614,7 +1614,7 @@ public class BDController {
 	/**
 	 * Método para saber si existe un Socio en la base de datos
 	 * @param dni_socio
-	 * @return verdadero si existe falso si no
+	 * @return verdadero si existe falso si no.
 	 */
 	//Método para saber si existe un Socio en la base de datos
 	public boolean existeSocio(String dni_socio) {

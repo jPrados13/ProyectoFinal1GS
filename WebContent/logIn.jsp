@@ -57,7 +57,7 @@
 			    </div>
 			    <div class="form-group col-md-6">
 			      <label for="password">Contraseña</label>
-			      <input type="password" class="form-control" id="password" name="password" placeholder="contraseña">
+			      <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
 			    </div>
 			  </div>
 			  <a href=""><button type="submit" class="btn btn-secondary">Entrar</button></a>

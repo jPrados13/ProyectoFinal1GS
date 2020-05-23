@@ -60,7 +60,7 @@
 		<div class="gatos">
 		<%for(int i = 0; i < gatosLocal.size(); i++) { %>
 			<div class="card" style="width: 18rem;">
-			  <img class="card-img-top" src="images/gatos/<%=gatosLocal.get(i).getNombre()%>.jpg" alt="<%=gatosLocal.get(i).getNombre()%>">
+			  <img class="card-img-top" src="images/gatos/<%=gatosLocal.get(i).getnChip()%>.jpg" alt="<%=gatosLocal.get(i).getNombre()%>">
 			  <div class="card-body">
 			    <h5 class="card-title"><%=gatosLocal.get(i).getNombre()%></h5>
 			    <p class="card-text"><%=gatosLocal.get(i).getDescripcion()%></p>
@@ -77,7 +77,7 @@
 		<div class="gatos">
 			<%for(int i = 0; i < gatosAdop.size(); i++) { %>
 			<div class="card" style="width: 18rem;">
-			  <img class="card-img-top" src="images/gatos/<%=gatosAdop.get(i).getNombre()%>.jpg" alt="<%=gatosAdop.get(i).getNombre()%>">
+			  <img class="card-img-top" src="images/gatos/<%=gatosAdop.get(i).getnChip()%>.jpg" alt="<%=gatosAdop.get(i).getNombre()%>">
 			  
 			  <div class="card-body">
 			    <h5 class="card-title"><%=gatosAdop.get(i).getNombre()%></h5>

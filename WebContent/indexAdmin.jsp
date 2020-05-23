@@ -68,27 +68,25 @@
 		<hr>
 		<a href="listaTrabajadores.jsp"><button type="button" class="btn btn-secondary btn-lg btn-block">Modificacion o Baja Trabajador</button></a>
 		<hr>
-		<a href=""><button type="button" class="btn btn-secondary btn-lg btn-block">Contratacion</button></a>
+		<a href="altaContrato.jsp"><button type="button" class="btn btn-secondary btn-lg btn-block">Contratacion</button></a>
 		<hr>
-		<a href=""><button type="button" class="btn btn-secondary btn-lg btn-block">Visita Veterinaria</button></a>
+		<a href="listaContratos.jsp"><button type="button" class="btn btn-secondary btn-lg btn-block">Modificación o Baja Contrato</button></a>
 		<hr>
-		<a href=""><button type="button" class="btn btn-secondary btn-lg btn-block">Alta Voluntario</button></a>
+		<a href="altaVisita.jsp"><button type="button" class="btn btn-secondary btn-lg btn-block">Visita Veterinaria</button></a>
 		<hr>
-		<a href=""><button type="button" class="btn btn-secondary btn-lg btn-block">Modificacion Voluntario</button></a>
+		<a href="listaVisitas.jsp"><button type="button" class="btn btn-secondary btn-lg btn-block">Modificacion o Baja Visita Veterinaria</button></a>
 		<hr>
-		<a href=""><button type="button" class="btn btn-secondary btn-lg btn-block">Baja Voluntario</button></a>
+		<a href="altaVoluntario.jsp"><button type="button" class="btn btn-secondary btn-lg btn-block">Alta Voluntario</button></a>
 		<hr>
-		<a href=""><button type="button" class="btn btn-secondary btn-lg btn-block">Alta Socio</button></a>
+		<a href="listaVoluntarios.jsp"><button type="button" class="btn btn-secondary btn-lg btn-block">Modificacion o Baja Voluntario</button></a>
 		<hr>
-		<a href=""><button type="button" class="btn btn-secondary btn-lg btn-block">Modifiacion Socio</button></a>
+		<a href="altaSocio.jsp"><button type="button" class="btn btn-secondary btn-lg btn-block">Alta Socio</button></a>
 		<hr>
-		<a href=""><button type="button" class="btn btn-secondary btn-lg btn-block">Baja Socio</button></a>
+		<a href="listaSocios.jsp"><button type="button" class="btn btn-secondary btn-lg btn-block">Modificaion o Baja Socio</button></a>
 		<hr>
-		<a href=""><button type="button" class="btn btn-secondary btn-lg btn-block">Alta Veterinario</button></a>
+		<a href="altaVeterinario.jsp"><button type="button" class="btn btn-secondary btn-lg btn-block">Alta Veterinario</button></a>
 		<hr>
-		<a href=""><button type="button" class="btn btn-secondary btn-lg btn-block">Modificacion Veterinario</button></a>
-		<hr>
-		<a href=""><button type="button" class="btn btn-secondary btn-lg btn-block">Baja Veterinario</button></a>
+		<a href="listadoVeterinarios.jsp"><button type="button" class="btn btn-secondary btn-lg btn-block">Modificacion o Baja Veterinario</button></a>
 		
 	</div>
 	

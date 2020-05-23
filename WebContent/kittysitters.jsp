@@ -65,7 +65,7 @@
 
 		Si estás interesado en que cuidemos de tus gatos, puedes solicitar un presupuesto sin compromiso en rellenando el formulario que encontrarás a continuación:</p>
 		<div class="formulario">
-			<form>
+			<form action="https://www.cognitoforms.com/LaGatoteca1/SolicitudServicioKittySitters" method="post">
 			  <div class="form-row">
 			    <div class="form-group col-md-6">
 			      <label for="inputEmail4">Nombre</label>

@@ -1,37 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="utf-8"%>
-  <%@ page import="lagatoteca.*" %>
 <%@ page import="java.util.*" %>
+<%@ page import="lagatoteca.*" %>
 <%@ page import="java.util.ArrayList" %>
-<!DOCTYPE html  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<% BDController controladorBD = new BDController();%>
+<% ArrayList<Voluntario> voluntarios = controladorBD.dameVoluntarios();%>
+<% ArrayList<Particular> particulares = controladorBD.dameParticulares();%>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Formulario Foto</title>
+	<title>Alta Contrato</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="assets/css/styleKitty.css">
 </head>
 <body>
-<%
-		BDController controladorBD = new BDController();
-		String titulo="";
-		String envio="";
-		int codigo=0;
-		if (request.getParameter("tipo").equalsIgnoreCase("altagato")) {
-			System.out.println("nombre gato en dormuFoto: " + request.getParameter("nChip"));
-			titulo="Foto Gato";
-			envio="operaciones.jsp?tipo=fotogato&nChip=" + request.getParameter("nChip");
-		}else if (request.getParameter("tipo").equalsIgnoreCase("altaLocal")) {
-			System.out.println("telefono local en dormuFoto: " + request.getParameter("telefonoLocal"));
-			titulo="Foto Local";
-			envio="operaciones.jsp?tipo=fotoLocal&telefonoLocal=" + request.getParameter("telefonoLocal");
-		}else if (request.getParameter("tipo").equalsIgnoreCase("altaequipo")) {
-			codigo = Integer.parseInt(request.getParameter("cod_equipo"));
-			titulo="Foto Escudo Equipo";
-			envio="operaciones.jsp?tipo=fotoequipo";
-		}
-		%>
 	<div class="nav">
 		<nav class="navbar navbar-expand-xl navbar-light bg-light">
 			<!-- Just an image -->
@@ -72,17 +56,42 @@
 	<div class="mainContainer">
 				<h2 class="subtitle"></h2>
 		<div class="formulario">
-			<form action=<%=envio %> method="post" enctype="multipart/form-data">
-			 
-			  <h2 class="subtitle"><%=titulo %></h2>
+			<form action="operaciones.jsp?tipo=altaContrato" method="post">
 			  <div class="form-row">
 			  	<div class="form-group col-md-6">
-			    	
-			    	<input type="file" name="file"/>
+			      <label for="Voluntario">Voluntario</label>
+			      <select id="Voluntario" name="dniVol" class="form-control">
+			        <option selected><%=voluntarios.get(0).getDni_Voluntario()%></option>
+			        <%for(int i = 0; i < voluntarios.size(); i++) {  %>
+			        <option title="<%=voluntarios.get(i).getNombre_Voluntario()%>"><%=voluntarios.get(i).getDni_Voluntario()%></option><%} %>
+			      </select>
+			    </div>
+			    <div class="form-group col-md-6">
+			      <label for="Particular">Particular</label>
+			      <select id="Particular" name="dniPart" class="form-control">
+			        <option selected><%=particulares.get(0).getDni_Particular()%></option>
+			        <%for(int i = 0; i < particulares.size(); i++) {  %>
+			        <option title="<%=particulares.get(i).getNombre_Particular()%>"><%=particulares.get(i).getDni_Particular()%></option><%} %>
+			      </select>
+			    </div>
+			    </div>
+			  <div class="form-row">
+			  	<div class="form-group col-md-6">
+			    	<label for="fechaIni">Fecha Inicio<span class="required" title="Campo requerido" >*</span></label>
+			    	<input type="date" class="form-control" id="fechaIni" name="fechaIni" placeholder="" required value="">
 				</div>
-				
+			  	<div class="form-group col-md-6">
+			    	<label for="fechaFin">Fecha Fin<span class="required" title="Campo requerido" >*</span></label>
+			    	<input type="date" class="form-control" id="fechaFin" name="fechaFin" placeholder="" required value="">
+				</div>
 			  </div>
-			  <button type="submit" class="btn btn-secondary">Subir Foto</button>
+			  <div class="form-row">
+			  	<div class="form-group col-md-6">
+			      <label for="nss">Presupuesto para el contrato<span class="required" title="Campo requerido" >*</span></label>
+			      <input type="number" required step="0.01" class="form-control" id="presupuesto" name="presupuesto" max="999.99" min="0" placeholder="30.50€" value="">
+			    </div>
+			  </div>
+			  <button type="submit" class="btn btn-secondary">Dar de Alta</button>
 			</form>
 		</div>	
 	</div>

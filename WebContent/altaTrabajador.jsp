@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Alta Gato Local</title>
+	<title>Alta Trabajador</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
@@ -59,7 +59,7 @@
 			  <div class="form-row">
 			  	<div class="form-group col-md-6">
 			      <label for="dni">Dni del trabajador<span class="required" title="Campo requerido" >*</span></label>
-			      <input type="number" required class="form-control" id="dni" name="dni" pattern="[0-9]{8,8}[A-Za-z]{1,1}" placeholder="70262535L">
+			      <input type="text" required class="form-control" id="dni" name="dni" pattern="[0-9]{8,8}[A-Za-z]{1,1}" placeholder="70262535L">
 			    </div>
 			    <div class="form-group col-md-6">
 			      <label for="nombre">Nombre<span class="required" title="Campo requerido" >*</span></label>

@@ -59,6 +59,9 @@ public class Gato {
 		return sexo;
 	}
 	public String getDescripcion() {
+		if (descripcion==null) {
+			descripcion="";
+		}
 		return descripcion;
 	}
 	public int getId_local() {

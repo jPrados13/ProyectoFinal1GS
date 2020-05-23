@@ -226,7 +226,7 @@ public class BDController {
 	//Método para añadir un gato adoptado a la base de datos
 	public void altaGatoAdoptado(int nChip, String nombre, double edad, String sexo, String descripcion, int id_local, String fechaAdop, String dniAdoptante){
 		
-		String cadenaSQL = "Insert gatos_Adoptados values (?,?,?,?,?,?,?)";
+		String cadenaSQL = "Insert gatos_Adoptados values (?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement miStatement = this.conexion.prepareStatement(cadenaSQL);
 			miStatement.setInt(1, nChip);
@@ -234,8 +234,8 @@ public class BDController {
 			miStatement.setDouble(3, edad);
 			miStatement.setString(4, sexo);
 			miStatement.setString(5, descripcion);
-			miStatement.setInt(6, id_local);
-			miStatement.setString(7, fechaAdop);
+			miStatement.setString(6, fechaAdop);
+			miStatement.setInt(7, id_local);
 			miStatement.setString(8, dniAdoptante);
 			
 			miStatement.executeUpdate();
@@ -1208,7 +1208,41 @@ public class BDController {
 			System.out.println("Error en modificación de Contrato: " + e.getMessage());
 		}
 	}
+	
+	public boolean existeContrato(int codigo_visita) {
+		boolean existe = false;
+		 try {
+	           String sql = "select * from contratan where codigo_visita = ?";
+	            PreparedStatement miStatement = this.conexion.prepareStatement(sql);
+	            miStatement.setInt(1, codigo_visita);
+	            ResultSet rs = miStatement.executeQuery();
+				while(rs.next()) {
+					
+					existe= true;
+					
+				}
+				miStatement.close();
+				rs.close();
+		        } catch (Exception e) {
+	            // TODO: handle exception
+	            System.out.println("Error en existe Contrato : " + e.getMessage());
+	        }
+		 return existe;
+	}
 
+	public void bajaContrato (int codigo_visita) {
+		
+		try {
+		    String sql = "Delete from contratan where codigo_visita = ?";
+		    PreparedStatement miStatement = this.conexion.prepareStatement(sql);
+		    miStatement.setInt(1, codigo_visita);
+		    miStatement.executeUpdate();
+	
+	     } catch (Exception e) {
+	         // TODO: handle exception
+	         System.out.println("Error en baja contrato : " + e.getMessage());
+	     }
+	}
 	
 	/**
 	 * Método que devuelve un listado con la informacion de todos los veterinarios
@@ -1457,7 +1491,7 @@ public class BDController {
 	//Metodo para añadir un contrato
 	public void modificarVisita(int id_cita, int numero_chip_GL, String dni_Veterinario, String fecha_cita, String tratamiento, int duracion) {
 		
-		String cadenaSQL = "UPDATE visitan numero_chip_GL = ?, dni_Veterinario = ?, fecha_cita = ?, tratamiento = ?, duracion = ? WHERE id_cita = ?";
+		String cadenaSQL = "UPDATE visitan SET Numero_chip_GL = ?, Dni_Veterinario = ?, Fecha_cita = ?, Tratamiento = ?, duracion = ? WHERE id_cita = ?";
 		try {
 			PreparedStatement miStatement = this.conexion.prepareStatement(cadenaSQL);
 			miStatement.setInt(1, numero_chip_GL);
@@ -1473,6 +1507,41 @@ public class BDController {
 			// TODO: handle exception
 			System.out.println("Error en modificación de visita: " + e.getMessage());
 		}
+	}
+	
+	public void bajaVisita (int id_cita) {
+		
+		try {
+		    String sql = "Delete from visitan where id_cita = ?";
+		    PreparedStatement miStatement = this.conexion.prepareStatement(sql);
+		    miStatement.setInt(1, id_cita);
+		    miStatement.executeUpdate();
+	
+	     } catch (Exception e) {
+	         // TODO: handle exception
+	         System.out.println("Error en baja Visita : " + e.getMessage());
+	     }
+	}
+	
+	public boolean existeVisita(int id_cita) {
+		boolean existe = false;
+		 try {
+	           String sql = "select * from visitan where id_cita = ?";
+	            PreparedStatement miStatement = this.conexion.prepareStatement(sql);
+	            miStatement.setInt(1, id_cita);
+	            ResultSet rs = miStatement.executeQuery();
+				while(rs.next()) {
+					
+					existe= true;
+					
+				}
+				miStatement.close();
+				rs.close();
+		        } catch (Exception e) {
+	            // TODO: handle exception
+	            System.out.println("Error en existe visita : " + e.getMessage());
+	        }
+		 return existe;
 	}
 
 	/**
@@ -1638,6 +1707,92 @@ public class BDController {
 		 return existe;
 	}
 	
+	public String dameNombreParticular(String dni_Particular) {
+		
+		String nombre = "";
+		try {
+			String cadena = "select Nombre_Particular from Particulares where dni_particular = ?";
+			PreparedStatement consultaPre = this.conexion.prepareStatement(cadena);
+			consultaPre.setString(1, dni_Particular);
+			ResultSet rs = consultaPre.executeQuery();
+			
+			while(rs.next()) {
+				nombre = rs.getString("Nombre_Particular");
+				}
+			consultaPre.close();
+			rs.close();
+		} catch (SQLException e) {
+			// TODO: handle exception
+			System.out.println("Error en dame nombre particular: " + e.getMessage());
+		}
+		
+		return nombre;
+	}
 	
+	public String dameNombreVoluntario(String Dni_Voluntario) {
+		
+		String nombre = "";
+		try {
+			String cadena = "select Nombre_Voluntario from Voluntarios where Dni_Voluntario = ?";
+			PreparedStatement consultaPre = this.conexion.prepareStatement(cadena);
+			consultaPre.setString(1, Dni_Voluntario);
+			ResultSet rs = consultaPre.executeQuery();
+			
+			while(rs.next()) {
+				nombre = rs.getString("Nombre_Voluntario");
+				}
+			consultaPre.close();
+			rs.close();
+		} catch (SQLException e) {
+			// TODO: handle exception
+			System.out.println("Error en dame nombre Voluntario: " + e.getMessage());
+		}
+		
+		return nombre;
+	}
+	
+	public String dameNombreVeterinario(String Dni_Veterinario) {
+		
+		String nombre = "";
+		try {
+			String cadena = "select Nombre_Veterinario from Veterinarios where Dni_Veterinario = ?";
+			PreparedStatement consultaPre = this.conexion.prepareStatement(cadena);
+			consultaPre.setString(1, Dni_Veterinario);
+			ResultSet rs = consultaPre.executeQuery();
+			
+			while(rs.next()) {
+				nombre = rs.getString("Nombre_Veterinario");
+				}
+			consultaPre.close();
+			rs.close();
+		} catch (SQLException e) {
+			// TODO: handle exception
+			System.out.println("Error en dame nombre Veterinario: " + e.getMessage());
+		}
+		
+		return nombre;
+	}
+	
+	public String dameNombreGato(int nChip) {
+		
+		String nombre = "";
+		try {
+			String cadena = "select Nombre_GL from Gatos_Local where Numero_chip_GL = ?";
+			PreparedStatement consultaPre = this.conexion.prepareStatement(cadena);
+			consultaPre.setInt(1, nChip);
+			ResultSet rs = consultaPre.executeQuery();
+			
+			while(rs.next()) {
+				nombre = rs.getString("Nombre_GL");
+				}
+			consultaPre.close();
+			rs.close();
+		} catch (SQLException e) {
+			// TODO: handle exception
+			System.out.println("Error en dame nombre gato: " + e.getMessage());
+		}
+		
+		return nombre;
+	}
 
 }

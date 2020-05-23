@@ -53,7 +53,7 @@
 		<!-- Fin barra de nav-->
 	</div>
 	<div class="mainContainer">
-		<h1 class="title">Nuestros Locales</h1>
+		<h1 class="title">Trabajadores</h1>
 		<div class="gatos">
 		<%for(int i = 0; i < trabajadores.size(); i++) { %>
 			<div class="card" style="height: 250px !important; width: 18rem;">

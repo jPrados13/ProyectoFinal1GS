@@ -67,11 +67,11 @@
 			  </div>
 			  <div class="form-row">
 			  	<div class="form-group col-md-6">
-			    	<label for="edad">Edad <%=gato.getEdad()%><span class="required" title="Campo requerido" >*</span></label>
+			    	<label for="edad">Edad <span class="required" title="Campo requerido" >*</span></label>
 			    	<input type="number" step="0.5" required class="form-control" max="99.9" id="edad" name="edad" placeholder="<%=gato.getEdad()%>" value="<%=gato.getEdad()%>" >
 				</div>
 			  	<div class="form-group col-md-6">
-			      <label for="sexo">Sexo <%=gato.getSexo()%></label>
+			      <label for="sexo">Sexo </label>
 			      <select id="sexo" name="sexo" class="form-control">
 			      	<option selected><%=gato.getSexo()%></option>
 			        <option >Hembra</option>
@@ -81,7 +81,7 @@
 			  </div>
 			  <div class="form-row">
 			  	<div class="form-group col-md-6">
-			    	<label for="fecha">Fecha Entrada <%=gato.getFechaEntrada()%><span class="required" title="Campo requerido" >*</span></label>
+			    	<label for="fecha">Fecha Entrada <span class="required" title="Campo requerido" >*</span></label>
 			    	<input type="date" class="form-control" id="fecha" name="fecha" placeholder="<%=gato.getFechaEntrada()%>" required value="<%=gato.getFechaEntrada()%>">
 				</div>
 				<div class="form-group col-md-6">

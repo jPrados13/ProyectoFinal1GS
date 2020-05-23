@@ -1,37 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="utf-8"%>
-  <%@ page import="lagatoteca.*" %>
 <%@ page import="java.util.*" %>
+<%@ page import="lagatoteca.*" %>
 <%@ page import="java.util.ArrayList" %>
-<!DOCTYPE html  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<% BDController controladorBD = new BDController();%>
+<% ArrayList<Local> locales = controladorBD.dameLocales();
+String dni  = request.getParameter("dni");%>
+<% Socio socio = controladorBD.dameSocio(dni); %>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Formulario Foto</title>
+	<title>Modificar  Socio</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="assets/css/styleKitty.css">
 </head>
 <body>
-<%
-		BDController controladorBD = new BDController();
-		String titulo="";
-		String envio="";
-		int codigo=0;
-		if (request.getParameter("tipo").equalsIgnoreCase("altagato")) {
-			System.out.println("nombre gato en dormuFoto: " + request.getParameter("nChip"));
-			titulo="Foto Gato";
-			envio="operaciones.jsp?tipo=fotogato&nChip=" + request.getParameter("nChip");
-		}else if (request.getParameter("tipo").equalsIgnoreCase("altaLocal")) {
-			System.out.println("telefono local en dormuFoto: " + request.getParameter("telefonoLocal"));
-			titulo="Foto Local";
-			envio="operaciones.jsp?tipo=fotoLocal&telefonoLocal=" + request.getParameter("telefonoLocal");
-		}else if (request.getParameter("tipo").equalsIgnoreCase("altaequipo")) {
-			codigo = Integer.parseInt(request.getParameter("cod_equipo"));
-			titulo="Foto Escudo Equipo";
-			envio="operaciones.jsp?tipo=fotoequipo";
-		}
-		%>
 	<div class="nav">
 		<nav class="navbar navbar-expand-xl navbar-light bg-light">
 			<!-- Just an image -->
@@ -72,17 +57,54 @@
 	<div class="mainContainer">
 				<h2 class="subtitle"></h2>
 		<div class="formulario">
-			<form action=<%=envio %> method="post" enctype="multipart/form-data">
-			 
-			  <h2 class="subtitle"><%=titulo %></h2>
+			<form action="operaciones.jsp?tipo=modificarSocio" method="post">
+			  <div class="form-row">
+			  	<input type="hidden" class="option" name="dni" value="<%=socio.getDni_Socio()%>"/>
+			    <div class="form-group col-md-6">
+			      <label for="nombre">Nombre<span class="required" title="Campo requerido" >*</span></label>
+			      <input type="text" class="form-control" required id="nombre" name="nombre" maxlength="20" value="<%=socio.getNombre_Socio()%>">
+			    </div>
+			  </div>
 			  <div class="form-row">
 			  	<div class="form-group col-md-6">
-			    	
-			    	<input type="file" name="file"/>
+			    	<label for="email">Email<span class="required" title="Campo requerido" >*</span></label>
+			    	<input type="Email" class="form-control" required id="email" name="email" placeholder="" value="<%=socio.getEmail()%>">	
 				</div>
-				
+			  	<div class="form-group col-md-6">
+			      <label for="tlf">Numero de telefono<span class="required" title="Campo requerido" >*</span></label>
+			      <input type="number" required class="form-control" id="tlf" name="tlf" pattern="[0-9]{9,9}" value="<%=socio.getTelefono_socio()%>">
+			    </div>
 			  </div>
-			  <button type="submit" class="btn btn-secondary">Subir Foto</button>
+			  <div class="form-row">
+			  	<div class="form-group col-md-6">
+			      <label for="type">Tipo</label>
+			      <select id="type" name="type" class="form-control">
+			      	<option selected><%=socio.getTipo()%></option>
+			       <option>Mensual</option>
+			        <option>Anual</option>
+			      </select>
+			    </div>
+			    <div class="form-group col-md-6">
+			      <label for="estado">Estado</label>
+			      <select id="estado" name="estado" class="form-control">
+			      	<option selected><%=socio.getEstado()%></option>
+			       <option>Activo</option>
+			        <option>Inactivo</option>
+			      </select>
+			    </div>
+			    </div>
+			     <div class="form-row">
+				<div class="form-group col-md-6">
+			      <label for="local">Local</label>
+			      <select id="local" name="local" class="form-control">
+			        <option selected><%=socio.getId_Local()%></option>
+			        <%for(int i = 0; i < locales.size(); i++) {  %>
+			        <option><%=locales.get(i).getId_local()%></option><%} %>
+			      </select>
+			    </div>
+			  </div>
+	
+			  <button type="submit" class="btn btn-secondary">Modificar</button>
 			</form>
 		</div>	
 	</div>

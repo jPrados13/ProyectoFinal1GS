@@ -240,7 +240,7 @@
 				}else{
 					nChip = Integer.parseInt(request.getParameter("nChip"));
 					nombre_gato = request.getParameter("nombre");
-					edad = Integer.parseInt(request.getParameter("edad"));
+					edad = Double.parseDouble(request.getParameter("edad"));
 					sexo = request.getParameter("sexo");
 					descripcion = request.getParameter("descripcion");
 					local = Integer.parseInt(request.getParameter("local"));
@@ -273,14 +273,19 @@
 				}else{
 					nChip = Integer.parseInt(request.getParameter("nChip"));
 					nombre_gato = request.getParameter("nombre");
-					edad = Integer.parseInt(request.getParameter("edad"));
+					edad = Double.parseDouble(request.getParameter("edad"));
 					sexo = request.getParameter("sexo");
 					descripcion = request.getParameter("descripcion");
 					local = Integer.parseInt(request.getParameter("local"));
 					fechaAdopcion = request.getParameter("fecha");
 					dniAdop = request.getParameter("dniAdop");
+					
+					if(request.getParameter("descripcion").isEmpty()){
+						descripcion = "";
+					}
 									
-					controladorBD.modificarGatoAdoptado(nChip, nombre_gato, edad, sexo, descripcion, local, fechaAdopcion, dniAdop);
+					controladorBD.altaGatoAdoptado(nChip, nombre_gato, edad, sexo, descripcion, local, fechaAdopcion, dniAdop);
+					
 					mensaje = "Gato dado de alta con exito";			
 					
 					//Reenvio a la página de subida de foto
@@ -302,7 +307,7 @@
 				
 				nChip = Integer.parseInt(request.getParameter("nChip"));
 				nombre_gato = request.getParameter("nombre");
-				edad = Integer.parseInt(request.getParameter("edad"));
+				edad = Double.parseDouble(request.getParameter("edad"));
 				sexo = request.getParameter("sexo");
 				descripcion = request.getParameter("descripcion");
 				local = Integer.parseInt(request.getParameter("local"));
@@ -326,7 +331,7 @@
 				
 				nChip = Integer.parseInt(request.getParameter("nChip"));
 				nombre_gato = request.getParameter("nombre");
-				edad = Integer.parseInt(request.getParameter("edad"));
+				edad = Double.parseDouble(request.getParameter("edad"));
 				sexo = request.getParameter("sexo");
 				descripcion = request.getParameter("descripcion");
 				local = Integer.parseInt(request.getParameter("local"));
@@ -490,7 +495,7 @@
 					nombre_Socio = request.getParameter("nombre");
 					telefono_socio = Integer.parseInt(request.getParameter("tlf"));
 					email = request.getParameter("email");
-					tipo = request.getParameter("tipo");
+					tipo = request.getParameter("type");
 					estado = request.getParameter("estado");
 					local = Integer.parseInt(request.getParameter("local"));
 					
@@ -510,7 +515,7 @@
 				nombre_Socio = request.getParameter("nombre");
 				telefono_socio = Integer.parseInt(request.getParameter("tlf"));
 				email = request.getParameter("email");
-				tipo = request.getParameter("tipo");
+				tipo = request.getParameter("type");
 				estado = request.getParameter("estado");
 				local = Integer.parseInt(request.getParameter("local"));
 				
@@ -573,7 +578,7 @@
 				
 								
 				controladorBD.modificarVoluntario(dni_Voluntario, nombre_Voluntario, fecha_Inscripcion, telefonoVolun, distrito, local);
-				mensaje = "Voluntario dado de alta con exito";			
+				mensaje = "Voluntario actualizado con exito";			
 			}
 
 		}
@@ -707,11 +712,11 @@
 			
 			if(operacion.equalsIgnoreCase("correcta")){
 				
-				dni_veterinario = request.getParameter("dniVet");
+				dni_Voluntario = request.getParameter("dniVol");
 				dni_Particular = request.getParameter("dniPart");
-				if(!controladorBD.existeVeterinario(dni_veterinario)){
+				if(!controladorBD.existeVoluntario(dni_Voluntario)){
 					
-					mensaje = "El dni del Veterinario no se encuentra en la base de datos, repita la operación de alta";
+					mensaje = "El dni del Voluntario no se encuentra en la base de datos, repita la operación de alta";
 					operacion = "incorrecta";
 					
 				}else if(!controladorBD.existeParticular(dni_Particular)){
@@ -726,7 +731,7 @@
 					presupuesto = Double.parseDouble(request.getParameter("presupuesto"));
 						
 									
-					controladorBD.altaContrato(dni_veterinario, dni_Particular, fecha_inicio_contrato, fecha_fin_contrato, presupuesto);
+					controladorBD.altaContrato(dni_Voluntario, dni_Particular, fecha_inicio_contrato, fecha_fin_contrato, presupuesto);
 					mensaje = "Contrato dado de alta con exito";
 				}				
 			}
@@ -738,25 +743,34 @@
 			if(operacion.equalsIgnoreCase("correcta")){
 				
 				codigo_contrato = Integer.parseInt(request.getParameter("codigo"));
-				dni_veterinario = request.getParameter("dniVet");
+				dni_Voluntario = request.getParameter("dniVol");
 				dni_Particular = request.getParameter("dniPart");
 				fecha_inicio_contrato = request.getParameter("fechaIni");	
 				fecha_fin_contrato = request.getParameter("fechaFin");	
 				presupuesto = Double.parseDouble(request.getParameter("presupuesto"));
 				
 								
-				controladorBD.modificarContrato(codigo_contrato, dni_veterinario, dni_Particular, fecha_inicio_contrato, fecha_fin_contrato, presupuesto);
-				mensaje = "Veterinario actualizado con exito";
+				controladorBD.modificarContrato(codigo_contrato, dni_Voluntario, dni_Particular, fecha_inicio_contrato, fecha_fin_contrato, presupuesto);
+				mensaje = "Contrato actualizado con exito";
 			}
 
 		}
 		
-		/*
-		//Variables visita
-		int id_Cita = 0;
-		String fecha_cita = "";
-		String tratamiento = "";
-		int duracion = 0;*/
+		//Baja de Contrato
+		if(request.getParameter("tipo").equalsIgnoreCase("bajaContrato")){
+			
+			if(operacion.equalsIgnoreCase("correcta")){
+				codigo_contrato = Integer.parseInt(request.getParameter("codigo"));
+				if(controladorBD.existeContrato(codigo_contrato)){
+					controladorBD.bajaContrato(codigo_contrato);
+					mensaje = "Contrato dado de baja con exito";
+				}else{
+					mensaje = "El código del contrato no se encuentra en la base de datos, repita la operación de baja";
+					operacion = "incorrecta";
+				}
+			}
+		}
+		
 
 				
 		//Alta de Visita
@@ -784,8 +798,42 @@
 								
 											
 					controladorBD.altaVisita(nChip, dni_veterinario, fecha_cita, tratamiento, duracion);
-					mensaje = "Visita dado de alta con exito";
+					mensaje = "Visita dada de alta con exito";
 				}				
+			}
+		}
+		
+		//Modificar Visita
+		if(request.getParameter("tipo").equalsIgnoreCase("modificarVisita")){
+			
+			if(operacion.equalsIgnoreCase("correcta")){
+				
+				id_Cita = Integer.parseInt(request.getParameter("id"));
+				nChip = Integer.parseInt(request.getParameter("nChip"));
+				dni_veterinario = request.getParameter("dniVet");
+				fecha_cita = request.getParameter("fecha");	
+				tratamiento = request.getParameter("tratamiento");	
+				duracion = Integer.parseInt(request.getParameter("duracion"));
+				
+								
+				controladorBD.modificarVisita(id_Cita, nChip, dni_veterinario, fecha_cita, tratamiento, duracion);
+				mensaje = "Visita actualizada con exito";
+			}
+
+		}
+		
+		//Baja de Visita
+		if(request.getParameter("tipo").equalsIgnoreCase("bajaVisita")){
+			
+			if(operacion.equalsIgnoreCase("correcta")){
+				id_Cita = Integer.parseInt(request.getParameter("id"));
+				if(controladorBD.existeVisita(id_Cita)){
+					controladorBD.bajaVisita(id_Cita);
+					mensaje = "Visita dada de baja con exito";
+				}else{
+					mensaje = "El código de la visita no se encuentra en la base de datos, repita la operación de baja";
+					operacion = "incorrecta";
+				}
 			}
 		}
 				

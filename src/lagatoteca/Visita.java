@@ -33,6 +33,9 @@ public class Visita {
 		return fecha_cita;
 	}
 	public String getTratamiento() {
+		if(tratamiento==null) {
+			tratamiento = "";
+		}
 		return tratamiento;
 	}
 	public int getDuracion() {

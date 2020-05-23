@@ -1,37 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="utf-8"%>
-  <%@ page import="lagatoteca.*" %>
 <%@ page import="java.util.*" %>
+<%@ page import="lagatoteca.*" %>
 <%@ page import="java.util.ArrayList" %>
-<!DOCTYPE html  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<% BDController controladorBD = new BDController();%>
+<% int codigo  = Integer.parseInt(request.getParameter("id"));%>
+<% Visita visita = controladorBD.dameVisita(codigo); %>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Formulario Foto</title>
+	<title>Modificar Visita</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="assets/css/styleKitty.css">
 </head>
 <body>
-<%
-		BDController controladorBD = new BDController();
-		String titulo="";
-		String envio="";
-		int codigo=0;
-		if (request.getParameter("tipo").equalsIgnoreCase("altagato")) {
-			System.out.println("nombre gato en dormuFoto: " + request.getParameter("nChip"));
-			titulo="Foto Gato";
-			envio="operaciones.jsp?tipo=fotogato&nChip=" + request.getParameter("nChip");
-		}else if (request.getParameter("tipo").equalsIgnoreCase("altaLocal")) {
-			System.out.println("telefono local en dormuFoto: " + request.getParameter("telefonoLocal"));
-			titulo="Foto Local";
-			envio="operaciones.jsp?tipo=fotoLocal&telefonoLocal=" + request.getParameter("telefonoLocal");
-		}else if (request.getParameter("tipo").equalsIgnoreCase("altaequipo")) {
-			codigo = Integer.parseInt(request.getParameter("cod_equipo"));
-			titulo="Foto Escudo Equipo";
-			envio="operaciones.jsp?tipo=fotoequipo";
-		}
-		%>
 	<div class="nav">
 		<nav class="navbar navbar-expand-xl navbar-light bg-light">
 			<!-- Just an image -->
@@ -72,17 +56,28 @@
 	<div class="mainContainer">
 				<h2 class="subtitle"></h2>
 		<div class="formulario">
-			<form action=<%=envio %> method="post" enctype="multipart/form-data">
-			 
-			  <h2 class="subtitle"><%=titulo %></h2>
+			<form action="operaciones.jsp?tipo=modificarVisita" method="post"> 
+			  <input type="hidden" class="option" name="id" value="<%=visita.getId_Cita()%>"/>
+			    <input type="hidden" class="option" name="dniVet" value="<%=visita.getDni_Veterinario()%>"/>
+			    <input type="hidden" class="option" name="nChip" value="<%=visita.getNumero_chip_GL()%>"/>
+			  	
 			  <div class="form-row">
 			  	<div class="form-group col-md-6">
-			    	
-			    	<input type="file" name="file"/>
+			    	<label for="fecha">Fecha de la cita<span class="required" title="Campo requerido" >*</span></label>
+			    	<input type="date" class="form-control" id="fecha" name="fecha" placeholder="<%=visita.getFecha_cita()%>" required value="<%=visita.getFecha_cita()%>">
 				</div>
-				
+			  	<div class="form-group col-md-6">
+			      <label for="duracion">Duración (en dias) del tratamiento<span class="required" title="Campo requerido" >*</span></label>
+			      <input type="number" required step="1" class="form-control" id="duracion" name="duracion" max="999" min="0" placeholder="15" value="<%=visita.getDuracion()%>">
+			    </div>
 			  </div>
-			  <button type="submit" class="btn btn-secondary">Subir Foto</button>
+			  <div class="form-row">
+			  	<div class="form-group col-md-6">
+				   	<label for="tratamiento">Descripción del tratamiento</label>
+				   	<textarea class="form-control" id="tratamiento" name="tratamiento" maxlength="100" rows="3"><%=visita.getTratamiento()%></textarea>
+				</div>
+			  </div>
+			  <button type="submit" class="btn btn-secondary">Modificar</button>
 			</form>
 		</div>	
 	</div>
